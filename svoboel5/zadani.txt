@@ -1,0 +1,42 @@
+Zadání z progtestu:
+===================
+
+Implementujte klasickou hru Pacman proti počítači (můžete naimplementovat i jiné varianty).
+
+Hra musí splňovat následující funkcionality:
+
+    Dodržování základních pravidel, sbírání bonusů, míncí (teček), třešniček, teleporty, atp.
+    Je implementováno několik druhů AI duchů (fungující i zároveň - např. duchové se liší barvou, znakem).
+    Lze načítat mapy ze souboru (bludiště + pozice bonusů a duchů).
+    Konfigurovatelná obtížnost hry ze souboru (rychlost duchů, délka trvání jednotlivých módů hry, pravděpodobnost přidání nového bonusu do mapy, ...)
+    Škálovatelná obtížnost duchů (více strategií duchů dle obtížnost, dle různého chování)
+
+Kde lze využít polymorfismus? (doporučené)
+
+    Rozdělení hráčů: hráč, duch (různé druhy umělé inteligence)
+    Mód hry: klasický (duchové chodí dle svých strategií), zběsilý (duchové pronásledují hráče), nezranitelný (duchové jsou pomalejší, dají se zabít)
+    Herní políčko: zem, stěna, bod, bonus (změna módu), třešnička (více bodů), teleport
+    Uživatelské rozhraní: konzole, ncurses, SDL, OpenGL (různé varianty), ...
+
+Je naimplementováno:
+====================
+
+Hra Pac Man pro jednoho hráče, který soupeří s počítačem. 
+Hráč ovládá klávesovými šipkami směr Pac Mana. Duchové jsou ovládáni různými typy "umělé inteligence" podle právě probíhajícího módu hry.
+Tyto pohybující entity nemohou vejít na políčko "zeď". 
+Pac Man má za úkol posbírat všechny mince (žluté tečky), když to dokáže, vyhrál. Když je mezitím 3x chycen duchy, prohrál.
+Na mapě se s určitou pravděpodobností (změnitelnou v nastavení) objevují třešničky (červené '*'), ty nemají žádný vliv na výhru/prohru, ale přidávají skóre.
+Na mapě je maximálně jeden teleport, tam mohou vstoupit všechny pohybující se entity a objeví se na druhé straně teleportu. Duchové s teleportem aktivně počítají ve svých strategiích.
+
+Hra má 3 módy - chase (duchové pronásledují Pac Mana podle svých strategií), scatter (duchové se rozptýlí do svých rohů) a frightened (Pac Man snědl štít a duchové jsou teď zranitelní).
+Pokud Pac Man v módu frightened sní ducha, duch se vrátí na svou startovní pozici a hráči budou započítany body navíc.
+Duchové jsou znázorněni různě barevnými 'M', Pac Mana na mapě označuje žluté 'O'.
+Trvání jednotlivých módů lze změnit v nastavení. Změnit lze také rychlost Pac Mana a duchů.
+
+Mapa se načítá ze souboru. Je nastaven defaultní soubor, který lze změnit v nastavení. 
+
+Polymorfismus je využit ve vykreslování jednotlivých políček v mapě a ve vykreslení bonusů.
+
+Je naimplementováno uživatelské rozhraní s knihovnou ncurses.
+
+Nastavení najdeme v hlavním menu, samotná změna hodnot nastavení se provádí pomocí grafického rozhraní v terminálu.
