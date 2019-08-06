@@ -9,3 +9,6 @@ There are 4 ghosts with different moving strategies and Pac Man controled by pla
 Rules: Pac Man is trying to collect all coins and, while doing that, avoid contact with ghosts. If there are no coins left, player wins. If Pac Man is caugth by ghost three times, player loses. There is a score count. Teleports can be used by all moving entities.
 
 Game uses ncurses for graphics.
+
+Basic makefile is added inside svoboel5 directory.
+Inside src you can find all source codes. Inside examples there are some maps to try.
